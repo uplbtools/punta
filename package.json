@@ -1,0 +1,14 @@
+{
+  "name": "punta",
+  "private": true,
+  "description": "Org link shortener, event pages, registration, and check-in with campaign analytics",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "lint": "echo \"No packages yet — see docs/IMPLEMENTATION_PLAN.md\"",
+    "test": "echo \"No tests yet\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

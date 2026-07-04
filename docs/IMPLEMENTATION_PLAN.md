@@ -95,28 +95,28 @@ MVP supports **redirect links** under org namespace for non-event use (announcem
 
 ```mermaid
 flowchart TB
-  subgraph public [Public]
-    LP[Landing / event page]
-    REDIR[Redirect /l/code]
-    REG[Register API]
-  end
-  subgraph org [Organizer app]
-    DASH[Dashboard]
-    SCAN[Check-in scanner]
-  end
-  subgraph backend [Backend]
-    API[Astro or Hono API]
-    DB[(Postgres)]
-    KV[(Redis — click buffer)]
-  end
-  REDIR --> KV
-  REDIR --> LP
-  LP --> REG
-  REG --> DB
-  DASH --> API
-  SCAN --> API
-  API --> DB
-  KV --> API
+ subgraph public [Public]
+ LP[Landing / event page]
+ REDIR[Redirect /l/code]
+ REG[Register API]
+ end
+ subgraph org [Organizer app]
+ DASH[Dashboard]
+ SCAN[Check-in scanner]
+ end
+ subgraph backend [Backend]
+ API[Astro or Hono API]
+ DB[(Postgres)]
+ KV[(Redis: click buffer)]
+ end
+ REDIR --> KV
+ REDIR --> LP
+ LP --> REG
+ REG --> DB
+ DASH --> API
+ SCAN --> API
+ API --> DB
+ KV --> API
 ```
 
 | Choice | Recommendation | Rationale |
@@ -136,46 +136,46 @@ flowchart TB
 
 ```ts
 type Event = {
-  id: string;
-  orgId: string;
-  slug: string;
-  title: string;
-  startsAt: string;
-  endsAt: string | null;
-  timezone: "Asia/Manila";
-  venueName: string | null;
-  venueUrl: string | null; // Room TBA, Google Maps, etc.
-  capacity: number | null;
-  waitlistEnabled: boolean;
-  descriptionMd: string;
-  status: "draft" | "published" | "archived";
+ id: string;
+ orgId: string;
+ slug: string;
+ title: string;
+ startsAt: string;
+ endsAt: string | null;
+ timezone: "Asia/Manila";
+ venueName: string | null;
+ venueUrl: string | null; // Room TBA, Google Maps, etc.
+ capacity: number | null;
+ waitlistEnabled: boolean;
+ descriptionMd: string;
+ status: "draft" | "published" | "archived";
 };
 
 type CampaignLink = {
-  id: string;
-  eventId: string | null; // null = pure redirect
-  code: string; // short code globally unique
-  label: string; // "poster", "instagram"
-  destinationUrl: string; // redirect target OR event page if eventId set
-  clickCount: number;
+ id: string;
+ eventId: string | null; // null = pure redirect
+ code: string; // short code globally unique
+ label: string; // "poster", "instagram"
+ destinationUrl: string; // redirect target OR event page if eventId set
+ clickCount: number;
 };
 
 type Registration = {
-  id: string;
-  eventId: string;
-  campaignLinkId: string | null;
-  email: string;
-  name: string;
-  fields: Record<string, string>;
-  status: "confirmed" | "waitlist" | "cancelled";
-  checkInAt: string | null;
-  ticketToken: string; // signed, in QR
+ id: string;
+ eventId: string;
+ campaignLinkId: string | null;
+ email: string;
+ name: string;
+ fields: Record<string, string>;
+ status: "confirmed" | "waitlist" | "cancelled";
+ checkInAt: string | null;
+ ticketToken: string; // signed, in QR
 };
 
 type ClickEvent = {
-  linkId: string;
-  occurredAt: string;
-  referrer: string | null;
+ linkId: string;
+ occurredAt: string;
+ referrer: string | null;
 };
 ```
 

@@ -26,11 +26,11 @@ Punta is **org-first**: teams, roles, reusable branding, and exports designed fo
 
 ```text
 Create org → New event → Publish landing page
-     ↓
+ ↓
 Generate links (poster QR, IG bio, partner org)
-     ↓
+ ↓
 Watch funnel: clicks → registrations → check-ins
-     ↓
+ ↓
 Export attendance + download QR for door
 ```
 
@@ -38,9 +38,9 @@ Export attendance + download QR for door
 
 ```text
 Scan QR / tap link → Event page → Register (minimal fields)
-     ↓
+ ↓
 Email or on-screen ticket with check-in QR
-     ↓
+ ↓
 Show QR at venue → marked present
 ```
 
@@ -73,15 +73,15 @@ Show QR at venue → marked present
 ```text
 punta/
 ├── apps/
-│   ├── web/           # org dashboard + public event pages
-│   └── scanner/       # lightweight check-in PWA (optional split)
+│ ├── web/ # org dashboard + public event pages
+│ └── scanner/ # lightweight check-in PWA (optional split)
 ├── packages/
-│   ├── db/            # Drizzle schema
-│   ├── link-core/     # slug generation, redirect rules
-│   └── analytics/     # funnel aggregation
+│ ├── db/ # Drizzle schema
+│ ├── link-core/ # slug generation, redirect rules
+│ └── analytics/ # funnel aggregation
 └── docs/
-    ├── IMPLEMENTATION_PLAN.md
-    └── ORG_ROLES.md
+ ├── IMPLEMENTATION_PLAN.md
+ └── ORG_ROLES.md
 ```
 
 ## Relationship to UPLB Tools

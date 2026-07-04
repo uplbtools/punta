@@ -25,18 +25,18 @@ How teams access Punta without everyone being an admin.
 
 ```ts
 type Org = {
-  id: string;
-  slug: string; // punta.example/o/{slug}
-  name: string;
-  logoUrl: string | null;
-  brandColor: string | null;
-  plan: "free" | "pro"; // pro deferred
+ id: string;
+ slug: string; // punta.example/o/{slug}
+ name: string;
+ logoUrl: string | null;
+ brandColor: string | null;
+ plan: "free" | "pro"; // pro deferred
 };
 
 type OrgMember = {
-  orgId: string;
-  userId: string;
-  role: "owner" | "editor" | "door" | "analyst";
+ orgId: string;
+ userId: string;
+ role: "owner" | "editor" | "door" | "analyst";
 };
 ```
 

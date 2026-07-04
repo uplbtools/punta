@@ -6,7 +6,7 @@ Org-wide agent defaults: see [room-tba/AGENTS.md](https://github.com/uplbtools/r
 
 ## Status
 
-**Planning repo — no `apps/*` packages yet.** Do not invent production code paths that contradict `docs/IMPLEMENTATION_PLAN.md`. Read the plan before scaffolding.
+**Planning repo: no `apps/*` packages yet.** Do not invent production code paths that contradict `docs/IMPLEMENTATION_PLAN.md`. Read the plan before scaffolding.
 
 ## Doc map
 
@@ -16,7 +16,7 @@ Org-wide agent defaults: see [room-tba/AGENTS.md](https://github.com/uplbtools/r
 | Org roles / permissions model | [docs/ORG_ROLES.md](docs/ORG_ROLES.md) |
 | Room TBA venue links | [room-tba](https://github.com/uplbtools/room-tba) map URLs / API (when integrated) |
 
-## Planned stack (target — not all implemented)
+## Planned stack (target: not all implemented)
 
 - **Monorepo:** npm workspaces (`apps/*`, `packages/*`)
 - **Web app:** Astro 7 + Svelte islands (per implementation plan)
@@ -42,17 +42,17 @@ Align new code with **Room TBA** patterns where stacks overlap (Astro, Drizzle, 
 | `bun run build` or app-specific build | Per app README |
 | Migrations | Apply Supabase SQL before deploy when Drizzle lands |
 
-Today stub scripts only echo — verification is **doc + plan consistency**.
+Today stub scripts only echo: verification is **doc + plan consistency**.
 
 ## Domain rules (from plan)
 
-- Short links and event pages are **org-scoped** — respect role matrix in `ORG_ROLES.md`
-- Campaign analytics: click → registration → check-in — preserve audit trail; no PII in public logs
+- Short links and event pages are **org-scoped**: respect role matrix in `ORG_ROLES.md`
+- Campaign analytics: click → registration → check-in: preserve audit trail; no PII in public logs
 - Deep links to Room TBA venues should use stable slugs, not raw IDs in user-facing URLs
 
 ## How to work
 
-- **Bias toward action** on scoped scaffolding — but **do not** build full product ahead of the plan
+- **Bias toward action** on scoped scaffolding: but **do not** build full product ahead of the plan
 - **Preserve the dirty tree**; keep scope tight
 - **`gh` by default** for issues and PRs
 - Update `IMPLEMENTATION_PLAN.md` when milestones or stack choices change

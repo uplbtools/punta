@@ -2,7 +2,7 @@
 
 How teams access Punta without everyone being an admin.
 
-**Status:** draft — refine during auth implementation.
+**Status:** draft: refine during auth implementation.
 
 ---
 
@@ -11,9 +11,9 @@ How teams access Punta without everyone being an admin.
 | Role | Links | Events | Registrations | Check-in | Billing | Org settings |
 | ---- | ----- | ------ | ------------- | -------- | ------- | ------------ |
 | **Owner** | CRUD | CRUD | view/export/delete | scan | manage | CRUD |
-| **Editor** | CRUD | CRUD | view/export | scan | — | — |
-| **Door staff** | — | view | view (name only) | scan | — | — |
-| **Analyst** | view | view | view/export | — | — | — |
+| **Editor** | CRUD | CRUD | view/export | scan |: |: |
+| **Door staff** |: | view | view (name only) | scan |: |: |
+| **Analyst** | view | view | view/export |: |: |: |
 
 - One **owner** per org minimum; ownership transfer supported.
 - **Door staff** see attendee name + ticket QR, not full registration answers (unless org enables for small events).

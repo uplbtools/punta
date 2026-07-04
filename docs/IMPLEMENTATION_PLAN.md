@@ -1,7 +1,7 @@
 # Implementation plan (tentative)
 
-**Last updated:** 2026-07-03  
-**Status:** draft — product name, domain, and auth provider open.
+**Last updated:** 2026-07-03 
+**Status:** draft: product name, domain, and auth provider open.
 
 **Punta** = org-grade **link shortener + event management + check-in**, with campaign analytics that connect clicks to attendance.
 
@@ -24,14 +24,14 @@ Each piece works in isolation but **nothing connects the poster QR to who showed
 
 | Capability | Generic link tool | Generic form | Punta |
 | ---------- | ----------------- | ------------ | ----- |
-| Short URL + QR | ✓ | — | ✓ |
-| Custom landing page | — | partial | ✓ event-native |
-| Registration | — | ✓ | ✓ tied to event |
-| Per-channel attribution | basic clicks | — | clicks → signups → check-ins |
-| Door check-in | — | add-on / manual | ✓ built-in QR ticket |
-| Org team roles | — | limited | owner / editor / door / analyst |
-| Attendance export | — | manual | ✓ CSV with campaign source |
-| Campus venue link | — | — | Room TBA deep link |
+| Short URL + QR | ✓ |: | ✓ |
+| Custom landing page |: | partial | ✓ event-native |
+| Registration |: | ✓ | ✓ tied to event |
+| Per-channel attribution | basic clicks |: | clicks → signups → check-ins |
+| Door check-in |: | add-on / manual | ✓ built-in QR ticket |
+| Org team roles |: | limited | owner / editor / door / analyst |
+| Attendance export |: | manual | ✓ CSV with campaign source |
+| Campus venue link |: |: | Room TBA deep link |
 
 **Design principle:** optimize for **org volunteers** running 3–10 events per sem, not enterprise marketing suites.
 
@@ -44,11 +44,11 @@ Each piece works in isolation but **nothing connects the poster QR to who showed
 - **Org** with slug, name, logo upload (optional).
 - **Event:** title, datetime, timezone `Asia/Manila`, venue text + optional Room TBA URL, capacity, description (markdown).
 - **Campaign links:** multiple short links per event (`/l/{code}`) with labels (poster, IG, partner).
-- **Public event page** — mobile-first; register button.
+- **Public event page**: mobile-first; register button.
 - **Registration form:** name, email, optional custom fields (college, year); waitlist when full.
 - **Confirmation:** on-screen ticket + QR encoding `registrationId`.
 - **Check-in scanner** (volunteer logged in): scan ticket → mark present.
-- **Dashboard funnel:** per link — clicks, registrations, check-ins.
+- **Dashboard funnel:** per link: clicks, registrations, check-ins.
 - **CSV export** of registrants with source link label.
 - **Auth:** email magic link for organizers; attendees register without account.
 
@@ -77,7 +77,7 @@ Each piece works in isolation but **nothing connects the poster QR to who showed
 
 ## 4. User journeys
 
-### Journey A — General Assembly
+### Journey A: General Assembly
 
 1. ES org creates "GBM March" event, capacity 200, venue "DL Umali Hall" + Room TBA link.
 2. Creates links: `gbm-poster`, `gbm-fb`, `gbm-partner-cssc`.
@@ -85,7 +85,7 @@ Each piece works in isolation but **nothing connects the poster QR to who showed
 4. Door volunteer opens Scanner → 142 check-ins.
 5. Secretary exports CSV; funnel shows FB link drove most clicks but poster drove most check-ins.
 
-### Journey B — Link-only (no event)
+### Journey B: Link-only (no event)
 
 MVP supports **redirect links** under org namespace for non-event use (announcements, docs). Same analytics shell; registration disabled. Keeps orgs from needing a second tool for pure short links.
 
@@ -179,7 +179,7 @@ type ClickEvent = {
 };
 ```
 
-**Ticket QR:** JWT or HMAC `{ registrationId, eventId, exp }` — scanner validates offline-capable with cached event public key (v0.2).
+**Ticket QR:** JWT or HMAC `{ registrationId, eventId, exp }`: scanner validates offline-capable with cached event public key (v0.2).
 
 ---
 
@@ -212,7 +212,7 @@ Stored as JSON schema per event; render dynamically on registration form.
 
 ## 9. Delivery phases
 
-### Phase 0 — Redirect spike (1 session)
+### Phase 0: Redirect spike (1 session)
 
 - [ ] `link-core`: generate code, store mapping, `302` redirect
 - [ ] Click counter (Postgres increment or Redis buffer)
@@ -220,7 +220,7 @@ Stored as JSON schema per event; render dynamically on registration form.
 
 **Exit:** Create link → 100 redirects → count accurate.
 
-### Phase 1 — Event + registration MVP (3–4 sessions)
+### Phase 1: Event + registration MVP (3–4 sessions)
 
 - [ ] Org + magic-link auth
 - [ ] Event CRUD, publish landing page
@@ -232,14 +232,14 @@ Stored as JSON schema per event; render dynamically on registration form.
 
 **Exit:** End-to-end test event with 2 campaign links and 10 test registrations.
 
-### Phase 2 — Comms & integrations
+### Phase 2: Comms & integrations
 
 - [ ] Email ticket
 - [ ] Webhooks + Discord notify
 - [ ] Room TBA venue picker helper (search room → paste URL)
 - [ ] Registration embed widget
 
-### Phase 3 — Scale & monetization hooks
+### Phase 3: Scale & monetization hooks
 
 - [ ] Custom domain docs
 - [ ] Rate limits + abuse monitoring
@@ -275,16 +275,16 @@ Stored as JSON schema per event; render dynamically on registration form.
 
 1. **Domain:** `punta.uplbtools.me` vs standalone brand?
 2. **Attendee accounts:** allow "my tickets" login or ticket QR only?
-3. **Multi-org users:** one email in many orgs — standard Supabase model.
-4. **Moderation:** report abusive public pages — manual queue at launch?
-5. **Offline check-in:** queue scans when gym Wi‑Fi dies — v0.2 or v0.3?
+3. **Multi-org users:** one email in many orgs: standard Supabase model.
+4. **Moderation:** report abusive public pages: manual queue at launch?
+5. **Offline check-in:** queue scans when gym Wi‑Fi dies: v0.2 or v0.3?
 
 ---
 
 ## 13. Next actions
 
 1. Phase 0 issue in this repo.
-2. Validate name **Punta** with org officers (confusing vs "punta sa…"?) — alias repo if renamed.
+2. Validate name **Punta** with org officers (confusing vs "punta sa…"?): alias repo if renamed.
 3. Wireframe: event landing + scanner on 320px.
 4. Discord skill doc stub for webhook payload shape.
 
